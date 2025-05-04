@@ -173,6 +173,40 @@
             font-size: 0.75rem;
             font-weight: 500;
         }
+         .orbit {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 2rem auto;
+        }
+        .planet {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 35% 35%, #4c7be3 5%, #1a4299 60%, #081856 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px 2px rgba(76, 123, 227, 0.4);
+        }
+        .moon {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle at 35% 35%, #d4d6e0 5%, #9ba2b9 60%, #596380 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            margin-top: -7.5px;
+            margin-left: -7.5px;
+            transform-origin: 35px 7.5px;
+            animation: orbit 8s linear infinite;
+        }
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -202,48 +236,13 @@
         <div class="repo-container" id="repo-container"></div>
     </main>
     
-    <footer class="container">
+   <footer class="container">
+        <div class="orbit">
+            <div class="planet"></div>
+            <div class="moon"></div>
+        </div>
         <p>© 2025 Jacekowe projekty. Wszystkie prawa zastrzeżone.</p>
     </footer>
-    <style>
-        .orbit {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            margin: 2rem auto;
-        }
-        
-        .planet {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle at 35% 35%, #4c7be3 5%, #1a4299 60%, #081856 100%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 10px 2px rgba(76, 123, 227, 0.4);
-        }
-        
-        .moon {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: radial-gradient(circle at 35% 35%, #d4d6e0 5%, #9ba2b9 60%, #596380 100%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            margin-top: -7.5px;
-            margin-left: -7.5px;
-            transform-origin: 35px 7.5px;
-            animation: orbit 8s linear infinite;
-        }
-        
-        @keyframes orbit {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const repoContainer = document.getElementById('repo-container');
