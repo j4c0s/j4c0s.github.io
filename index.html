@@ -294,13 +294,8 @@
             </div>
         </div>
         
-        <div class="search-container">
-            <input type="text" id="username-input" class="search-input" placeholder="GitHub username (np. j4c0s)" value="j4c0s">
-            <button id="search-button" class="search-button">Wyszukaj projekty</button>
-        </div>
-        
         <div id="error-container"></div>
-        <div id="loading-container" class="loading" style="display: none;">
+        <div id="loading-container" class="loading">
             <div class="spinner"></div>
             <span>Ładowanie projektów...</span>
         </div>
@@ -316,32 +311,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const usernameInput = document.getElementById('username-input');
-            const searchButton = document.getElementById('search-button');
             const repoContainer = document.getElementById('repo-container');
             const loadingContainer = document.getElementById('loading-container');
             const errorContainer = document.getElementById('error-container');
             
-            // Domyślnie wyszukaj projekty po załadowaniu strony
-            fetchRepositories(usernameInput.value);
+            // Stała nazwa użytkownika - tylko twoje projekty
+            const username = 'j4c0s';
             
-            // Obsługa kliknięcia przycisku wyszukiwania
-            searchButton.addEventListener('click', function() {
-                const username = usernameInput.value.trim();
-                if (username) {
-                    fetchRepositories(username);
-                }
-            });
-            
-            // Obsługa naciśnięcia Enter w polu wyszukiwania
-            usernameInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const username = usernameInput.value.trim();
-                    if (username) {
-                        fetchRepositories(username);
-                    }
-                }
-            });
+            // Automatycznie wyszukaj projekty po załadowaniu strony
+            fetchRepositories(username);
             
             // Funkcja do pobierania repozytoriów z GitHuba
             function fetchRepositories(username) {
