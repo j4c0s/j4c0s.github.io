@@ -14,13 +14,11 @@
             --border-color: #1e3a6a;
         }
         
-        /* Animacja zmieniającego się tła */
+        /* Zoptymalizowana animacja tła - tylko ciemne odcienie */
         @keyframes backgroundColorChange {
             0% { background-color: #081021; }
-            20% { background-color: #142045; }
-            40% { background-color: #1a2555; }
-            60% { background-color: #10274d; }
-            80% { background-color: #0a1e3c; }
+            33% { background-color: #0c1c34; }
+            66% { background-color: #0a1526; }
             100% { background-color: #081021; }
         }
         
@@ -30,10 +28,342 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            animation: backgroundColorChange 30s infinite;
+            animation: backgroundColorChange 45s infinite;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23122041' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%232a3b5a'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
-            background-blend-mode: overlay;
+        }
+        header {
+            background-color: var(--header-bg-color);
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+       h2{
+            margin: 0;
+            color: var(--text-color);
+        }
+        .subtitle {
+            color: #8b949e;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .repo-container {
+            margin-top: 3rem;
+        }
+        .repo-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .repo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        .repo-title {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .repo-title a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .repo-title a:hover {
+            text-decoration: underline;
+        }
+        .repo-description {
+            color: #8b949e;
+            margin: 0.5rem 0 1rem;
+            font-size: 0.95rem;
+        }
+        .repo-meta {
+            font-size: 0.85rem;
+            color: #8b949e;
+            display: flex;
+            gap: 1rem;
+        }
+        .repo-meta span {
+            display: flex;
+            align-items: center;
+        }
+        .repo-meta svg {
+            margin-right: 0.25rem;
+        }
+        footer {
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        .avatar {
+            display: inline-block;
+            overflow: hidden;
+            line-height: 1;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+        }
+        .avatar img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .profile-info {
+            margin-left: 1rem;
+        }
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .profile-username {
+            color: #8b949e;
+            font-size: 1rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem 0;
+            color: #8b949e;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent-color);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #8b949e;
+        }
+        .spinner {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 3px solid rgba(88, 166, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .page-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.6rem;
+            background-color: #1f6feb;
+            color: white;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+         .orbit {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 2rem auto;
+        }
+        .planet {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 35% 35%, #4c7be3 5%, #1a4299 60%, #081856 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px 2px rgba(76, 123, 227, 0.4);
+        }
+        .moon {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle at 35% 35%, #d4d6e0 5%, #9ba2b9 60%, #596380 100%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            margin-top: -7.5px;
+            margin-left: -7.5px;
+            transform-origin: 35px 7.5px;
+            animation: orbit 8s linear infinite;
+        }
+        @keyframes orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Jackowe projekty</h1>
+            <p class="subtitle">Moje repozytoria gitowe i projekty programistyczne</p>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="profile-section">
+            <div class="avatar">
+                <img src="https://avatars.githubusercontent.com/j4c0s" alt="Jacek avatar" width="80" height="80" onerror="this.src='/api/placeholder/80/80'"/>
+            </div>
+            <div class="profile-info">
+                <h2 class="profile-name">Jacek</h2>
+                <p class="profile-username">@j4c0s</p>
+            </div>
+        </div>
+        
+        <div id="loading-container" class="loading">
+            <div class="spinner"></div>
+            <span>Ładowanie projektów...</span>
+        </div>
+        
+        <div class="repo-container" id="repo-container"></div>
+    </main>
+    
+   <footer class="container">
+        <div class="orbit">
+            <div class="planet"></div>
+            <div class="moon"></div>
+        </div>
+        <p>© 2025 Jackowe projekty. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const repoContainer = document.getElementById('repo-container');
+            const loadingContainer = document.getElementById('loading-container');
+            const username = 'j4c0s'; // Zahardkodowana nazwa użytkownika
+            
+            fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`)
+                .then(response => response.json())
+                .then(async data => {
+                    loadingContainer.style.display = 'none';
+                    
+                    if (data.length === 0) {
+                        repoContainer.innerHTML = '<div class="empty-state"><p>W tej chwili nie ma dostępnych repozytoriów.</p></div>';
+                        return;
+                    }
+                    
+                    let repoHTML = '';
+                    
+                    for (const repo of data) {
+                        if (repo.name === `${username}.github.io`) continue;
+                        
+                        const pageUrl = `https://${username}.github.io/${repo.name}`;
+                        let hasPage = false;
+                        
+                        try {
+                            await fetch(pageUrl, { method: 'HEAD', mode: 'no-cors' });
+                            hasPage = true;
+                        } catch (error) {}
+                        
+                        const titleLink = hasPage ? pageUrl : repo.html_url;
+                        
+                        const languageTag = repo.language ? 
+                            `<span class="tag">${repo.language}</span>` : '';
+                        
+                        const topicTags = repo.topics && repo.topics.length ? 
+                            repo.topics.map(topic => `<span class="tag">${topic}</span>`).join('') : '';
+                        
+                        const pageLink = hasPage ? 
+                            `<span class="page-badge"><svg height="12" viewBox="0 0 24 24" width="12" fill="white" style="margin-right: 4px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>Pages</span>` : '';
+                        
+                        repoHTML += `
+                        <div class="repo-card">
+                            <div class="repo-header">
+                                <h3 class="repo-title">
+                                    <a href="${titleLink}" target="_blank">${repo.name}</a>
+                                </h3>
+                            </div>
+                            <p class="repo-description">
+                                ${repo.description || 'Brak opisu dla tego projektu.'}
+                            </p>
+                            <div>
+                                ${languageTag}
+                                ${topicTags}
+                            </div>
+                            <div class="repo-meta">
+                                <span>
+                                    <svg height="16" viewBox="0 0 16 16" width="16" fill="#8b949e">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                                    </svg>
+                                    <a href="${repo.html_url}" target="_blank">${repo.full_name}</a>
+                                </span>
+                                ${pageLink}
+                            </div>
+                        </div>`;
+                    }
+                    
+                    repoContainer.innerHTML = repoHTML;
+                })
+                .catch(() => {
+                    loadingContainer.style.display = 'none';
+                    repoContainer.innerHTML = '<div class="empty-state"><p>W tej chwili nie ma dostępnych repozytoriów.</p></div>';
+                });
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackowe projekty</title>
+    <style>
+        :root {
+            --main-bg-color: #081021;
+            --header-bg-color: #0a1a33;
+            --text-color: #e0e6ff;
+            --accent-color: #7aa5ff;
+            --card-bg-color: #112240;
+            --border-color: #1e3a6a;
+        }
+        
+        /* Zoptymalizowana animacja tła - tylko ciemne odcienie */
+        @keyframes backgroundColorChange {
+            0% { background-color: #081021; }
+            33% { background-color: #0c1c34; }
+            66% { background-color: #0a1526; }
+            100% { background-color: #081021; }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            animation: backgroundColorChange 45s infinite;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23122041' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%232a3b5a'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
         }
         header {
             background-color: var(--header-bg-color);
